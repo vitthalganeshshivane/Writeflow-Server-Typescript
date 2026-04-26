@@ -1,0 +1,918 @@
+<!-- weekly-digest.html -->
+<!doctype html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Your Weekly Digest — WriteFlow</title>
+    <!--[if mso]>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+    <![endif]-->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+      img {
+        -ms-interpolation-mode: bicubic;
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #0a0a0a;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        color: #e0e0e0;
+      }
+
+      .email-wrapper {
+        width: 100%;
+        background-color: #0a0a0a;
+        padding: 40px 20px;
+      }
+
+      .email-container {
+        max-width: 640px;
+        margin: 0 auto;
+        background-color: #141414;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.3),
+          0 20px 60px rgba(0, 0, 0, 0.5),
+          0 0 100px rgba(255, 255, 255, 0.02);
+      }
+
+      .digest-header {
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 40%,
+          #1a1a2e 100%
+        );
+        background-size: 200% 200%;
+        padding: 40px 40px 35px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .digest-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+      }
+
+      .header-top {
+        margin-bottom: 28px;
+      }
+
+      .header-top table {
+        width: 100%;
+      }
+
+      .header-logo {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .header-logo-icon {
+        display: inline-block;
+        font-size: 20px;
+        margin-right: 6px;
+        vertical-align: middle;
+      }
+
+      .header-date {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      .digest-title {
+        font-size: 28px;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.3;
+        margin-bottom: 10px;
+      }
+
+      .digest-subtitle {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.5;
+      }
+
+      .digest-body {
+        padding: 40px;
+      }
+
+      .section-header {
+        margin-bottom: 22px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .section-emoji {
+        margin-right: 8px;
+      }
+
+      .section-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        background: rgba(102, 126, 234, 0.15);
+        color: #8b9cf7;
+        font-size: 11px;
+        font-weight: 600;
+        border-radius: 6px;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+
+      .featured-article {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.08) 0%,
+          rgba(118, 75, 162, 0.08) 100%
+        );
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .featured-badge {
+        display: inline-block;
+        padding: 5px 14px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 0 0 10px 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-left: 24px;
+      }
+
+      .featured-inner {
+        padding: 20px 28px 26px;
+      }
+
+      .article-meta {
+        margin-bottom: 10px;
+      }
+
+      .article-author-avatar {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        text-align: center;
+        line-height: 24px;
+        font-size: 12px;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .article-author-name {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        vertical-align: middle;
+      }
+
+      .article-date {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.3);
+        float: right;
+        margin-top: 4px;
+      }
+
+      .featured-title {
+        font-size: 22px;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.3;
+        margin-bottom: 10px;
+      }
+
+      .featured-title a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .featured-excerpt {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+        margin-bottom: 18px;
+      }
+
+      .featured-cta {
+        display: inline-block;
+        padding: 10px 24px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        color: #ffffff !important;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .featured-cta:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .article-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 0;
+        margin-bottom: 16px;
+        overflow: hidden;
+      }
+
+      .article-inner {
+        padding: 22px 24px;
+      }
+
+      .article-card:hover {
+        border-color: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .article-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.4;
+        margin-bottom: 8px;
+      }
+
+      .article-title a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .article-title a:hover {
+        color: #8b9cf7;
+      }
+
+      .article-excerpt {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+
+      .article-footer {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .article-tag {
+        display: inline-block;
+        padding: 4px 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 6px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+      }
+
+      .article-likes {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      .article-likes-icon {
+        color: rgba(255, 255, 255, 0.25);
+        margin-right: 4px;
+      }
+
+      .trend-rank {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: center;
+        line-height: 28px;
+        font-size: 13px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.3);
+        margin-right: 14px;
+        float: left;
+        margin-top: 2px;
+      }
+
+      .topics-grid {
+        margin: 30px 0;
+      }
+
+      .topic-pill {
+        display: inline-block;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 25px;
+        margin: 4px 3px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .topic-pill:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+      }
+
+      .topic-pill .topic-emoji {
+        margin-right: 5px;
+      }
+
+      .writer-spotlight {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 24px;
+        margin: 16px 0;
+      }
+
+      .writer-info table {
+        width: 100%;
+      }
+
+      .writer-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        text-align: center;
+        line-height: 48px;
+        font-size: 20px;
+      }
+
+      .writer-name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .writer-handle {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .writer-bio {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.5;
+        margin-top: 12px;
+      }
+
+      .follow-btn {
+        display: inline-block;
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        color: #ffffff !important;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 14px;
+      }
+
+      .follow-btn:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .digest-cta {
+        text-align: center;
+        padding: 35px 0 10px;
+      }
+
+      .digest-cta-button {
+        display: inline-block;
+        padding: 16px 44px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .digest-cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+      }
+
+      .section-separator {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        margin: 35px 0;
+      }
+
+      .digest-footer {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 35px 40px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .footer-links a {
+        display: inline-block;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 13px;
+        margin: 0 12px;
+      }
+
+      .footer-links a:hover {
+        color: #ffffff;
+      }
+
+      .footer-separator {
+        color: rgba(255, 255, 255, 0.15);
+      }
+
+      .footer-social {
+        margin: 18px 0;
+      }
+
+      .footer-social a {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+        line-height: 36px;
+        text-align: center;
+        margin: 0 4px;
+        font-size: 14px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-copyright {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.2);
+        line-height: 1.8;
+      }
+
+      .footer-copyright a {
+        color: rgba(255, 255, 255, 0.3);
+        text-decoration: underline;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .email-wrapper {
+          padding: 16px 12px;
+        }
+        .digest-header {
+          padding: 30px 24px 25px;
+        }
+        .digest-body {
+          padding: 28px 24px;
+        }
+        .digest-footer {
+          padding: 28px 24px;
+        }
+        .digest-title {
+          font-size: 22px;
+        }
+        .featured-title {
+          font-size: 18px;
+        }
+        .featured-inner {
+          padding: 16px 20px 22px;
+        }
+        .article-inner {
+          padding: 18px 20px;
+        }
+        .writer-spotlight {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-wrapper">
+      <div class="email-container">
+        <div class="digest-header">
+          <div class="header-top">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td>
+                  <a href="{{app_url}}" class="header-logo">
+                    <span class="header-logo-icon">✍️</span> Writeflow
+                  </a>
+                </td>
+                <td style="text-align: right">
+                  <span class="header-date">{{week_date_range}}</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <h1 class="digest-title">Your Weekly Digest 📬</h1>
+          <p class="digest-subtitle">
+            The best stories, trending topics, and community highlights from
+            this week.
+          </p>
+        </div>
+
+        <div class="digest-body">
+          <div class="section-header">
+            <span class="section-title"
+              ><span class="section-emoji">⭐</span>Editor's Pick</span
+            >
+          </div>
+
+          <div class="featured-article">
+            <div class="featured-badge">FEATURED</div>
+            <div class="featured-inner">
+              <div class="article-meta" style="margin-bottom: 14px">
+                <span class="article-author-avatar">🎭</span>
+                <span class="article-author-name"
+                  >{{featured_author}} @{{featured_handle}}</span
+                >
+                <span class="article-date">{{featured_date}}</span>
+              </div>
+              <h2 class="featured-title">
+                <a href="{{featured_url}}">{{featured_title}}</a>
+              </h2>
+              <p class="featured-excerpt">{{featured_excerpt}}</p>
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>
+                    <a href="{{featured_url}}" class="featured-cta"
+                      >Read Story →</a
+                    >
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="section-separator"></div>
+
+          <div class="section-header">
+            <span class="section-title"
+              ><span class="section-emoji">🔥</span>Trending This Week</span
+            >
+            <span class="section-badge">TOP 5</span>
+          </div>
+
+          <div class="article-card">
+            <div class="article-inner">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 42px; vertical-align: top">
+                    <div class="trend-rank">01</div>
+                  </td>
+                  <td>
+                    <div class="article-meta">
+                      <span class="article-author-avatar">🚀</span>
+                      <span class="article-author-name"
+                        >{{article1_author}}</span
+                      >
+                      <span class="article-date">{{article1_date}}</span>
+                    </div>
+                    <h3 class="article-title">
+                      <a href="{{article1_url}}">{{article1_title}}</a>
+                    </h3>
+                    <p class="article-excerpt">{{article1_excerpt}}</p>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td>
+                          <span class="article-tag">{{article1_tag}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-inner">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 42px; vertical-align: top">
+                    <div class="trend-rank">02</div>
+                  </td>
+                  <td>
+                    <div class="article-meta">
+                      <span class="article-author-avatar">📚</span>
+                      <span class="article-author-name"
+                        >{{article2_author}}</span
+                      >
+                      <span class="article-date">{{article2_date}}</span>
+                    </div>
+                    <h3 class="article-title">
+                      <a href="{{article2_url}}">{{article2_title}}</a>
+                    </h3>
+                    <p class="article-excerpt">{{article2_excerpt}}</p>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td>
+                          <span class="article-tag">{{article2_tag}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-inner">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 42px; vertical-align: top">
+                    <div class="trend-rank">03</div>
+                  </td>
+                  <td>
+                    <div class="article-meta">
+                      <span class="article-author-avatar">🎬</span>
+                      <span class="article-author-name"
+                        >{{article3_author}}</span
+                      >
+                      <span class="article-date">{{article3_date}}</span>
+                    </div>
+                    <h3 class="article-title">
+                      <a href="{{article3_url}}">{{article3_title}}</a>
+                    </h3>
+                    <p class="article-excerpt">{{article3_excerpt}}</p>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td>
+                          <span class="article-tag">{{article3_tag}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-inner">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 42px; vertical-align: top">
+                    <div class="trend-rank">04</div>
+                  </td>
+                  <td>
+                    <div class="article-meta">
+                      <span class="article-author-avatar">💡</span>
+                      <span class="article-author-name"
+                        >{{article4_author}}</span
+                      >
+                      <span class="article-date">{{article4_date}}</span>
+                    </div>
+                    <h3 class="article-title">
+                      <a href="{{article4_url}}">{{article4_title}}</a>
+                    </h3>
+                    <p class="article-excerpt">{{article4_excerpt}}</p>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td>
+                          <span class="article-tag">{{article4_tag}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-inner">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 42px; vertical-align: top">
+                    <div class="trend-rank">05</div>
+                  </td>
+                  <td>
+                    <div class="article-meta">
+                      <span class="article-author-avatar">🌍</span>
+                      <span class="article-author-name"
+                        >{{article5_author}}</span
+                      >
+                      <span class="article-date">{{article5_date}}</span>
+                    </div>
+                    <h3 class="article-title">
+                      <a href="{{article5_url}}">{{article5_title}}</a>
+                    </h3>
+                    <p class="article-excerpt">{{article5_excerpt}}</p>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td>
+                          <span class="article-tag">{{article5_tag}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="section-separator"></div>
+
+          <div class="section-header">
+            <span class="section-title"
+              ><span class="section-emoji">🏷️</span>Hot Topics This Week</span
+            >
+          </div>
+
+          <div class="topics-grid">
+            <a href="{{app_url}}/search/Programming" class="topic-pill"
+              ><span class="topic-emoji">💻</span> Programming</a
+            >
+            <a href="{{app_url}}/search/Hollywood" class="topic-pill"
+              ><span class="topic-emoji">🎬</span> Hollywood</a
+            >
+            <a href="{{app_url}}/search/Film%20Making" class="topic-pill"
+              ><span class="topic-emoji">🎥</span> Film Making</a
+            >
+            <a href="{{app_url}}/search/Social%20Media" class="topic-pill"
+              ><span class="topic-emoji">📱</span> Social Media</a
+            >
+            <a href="{{app_url}}/search/Cooking" class="topic-pill"
+              ><span class="topic-emoji">🍳</span> Cooking</a
+            >
+            <a href="{{app_url}}/search/Tech" class="topic-pill"
+              ><span class="topic-emoji">⚡</span> Tech</a
+            >
+            <a href="{{app_url}}/search/Finances" class="topic-pill"
+              ><span class="topic-emoji">💰</span> Finances</a
+            >
+            <a href="{{app_url}}/search/Travel" class="topic-pill"
+              ><span class="topic-emoji">✈️</span> Travel</a
+            >
+            <a href="{{app_url}}/search/F1" class="topic-pill"
+              ><span class="topic-emoji">🏎️</span> F1</a
+            >
+          </div>
+
+          <div class="section-separator"></div>
+
+          <div class="section-header">
+            <span class="section-title"
+              ><span class="section-emoji">✨</span>Writer Spotlight</span
+            >
+          </div>
+
+          <div class="writer-spotlight">
+            <div class="writer-info">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td
+                    style="
+                      width: 60px;
+                      vertical-align: top;
+                      padding-right: 16px;
+                    "
+                  >
+                    <div class="writer-avatar">{{spotlight_emoji}}</div>
+                  </td>
+                  <td>
+                    <div class="writer-name">{{spotlight_name}}</div>
+                    <div class="writer-handle">@{{spotlight_handle}}</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p class="writer-bio">{{spotlight_bio}}</p>
+            <a href="{{spotlight_url}}" class="follow-btn">View Profile →</a>
+          </div>
+
+          <div class="digest-cta">
+            <a href="{{app_url}}" class="digest-cta-button"
+              >Explore WriteFlow →</a
+            >
+            <p
+              style="
+                margin-top: 14px;
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.3);
+              "
+            >
+              Discover more stories and share your own
+            </p>
+          </div>
+        </div>
+
+        <div class="digest-footer">
+          <div class="footer-links">
+            <a href="{{app_url}}">Home</a>
+            <span class="footer-separator">·</span>
+            <a href="{{app_url}}/editor">Write</a>
+            <span class="footer-separator">·</span>
+            <a href="{{app_url}}">Explore</a>
+            <span class="footer-separator">·</span>
+            <a href="{{app_url}}/help">Help</a>
+          </div>
+
+          <div class="footer-social">
+            <a href="#">𝕏</a>
+            <a href="#">in</a>
+            <a href="#">📷</a>
+          </div>
+
+          <p class="footer-copyright">
+            © 2024 WriteFlow — Where ideas flow<br />
+            <span style="font-size: 11px"
+              >You're receiving this weekly digest because you opted in.</span
+            ><br />
+            <a href="#" class="unsubscribe-link">Unsubscribe</a> ·
+            <a href="#" class="unsubscribe-link">Email Preferences</a> ·
+            <a href="#" class="unsubscribe-link">View in browser</a>
+          </p>
+        </div>
+      </div>
+
+      <p
+        style="
+          text-align: center;
+          margin-top: 24px;
+          font-size: 11px;
+          color: rgba(255, 255, 255, 0.15);
+        "
+      >
+        Sent with ❤️ from WriteFlow every week
+      </p>
+    </div>
+  </body>
+</html>

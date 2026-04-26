@@ -1,0 +1,734 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Welcome to WriteFlow</title>
+    <!--[if mso]>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+    <![endif]-->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      img {
+        -ms-interpolation-mode: bicubic;
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #0a0a0a;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        color: #e0e0e0;
+      }
+
+      .email-wrapper {
+        width: 100%;
+        background-color: #0a0a0a;
+        padding: 40px 20px;
+      }
+
+      .email-container {
+        max-width: 640px;
+        margin: 0 auto;
+        background-color: #141414;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.3),
+          0 20px 60px rgba(0, 0, 0, 0.5),
+          0 0 100px rgba(255, 255, 255, 0.02);
+      }
+
+      .email-header {
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 30%,
+          #0f3460 60%,
+          #1a1a2e 100%
+        );
+        background-size: 300% 300%;
+        padding: 50px 40px 45px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .email-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            ellipse at 30% 20%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 70% 80%,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      .email-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+      }
+
+      .logo-container {
+        margin-bottom: 28px;
+      }
+
+      .logo-text {
+        display: block;
+        margin-top: 14px;
+        font-size: 26px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-tagline {
+        display: block;
+        margin-top: 6px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+
+      .welcome-title {
+        font-size: 32px;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+
+      .welcome-subtitle {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.6;
+      }
+
+      .divider {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 3px;
+        margin: 0 auto;
+      }
+
+      .email-body {
+        padding: 45px 40px;
+      }
+
+      .greeting-text {
+        font-size: 18px;
+        color: #e0e0e0;
+        line-height: 1.7;
+        margin-bottom: 30px;
+      }
+
+      .greeting-text .username {
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .highlight-text {
+        color: #8b9cf7;
+        font-weight: 600;
+      }
+
+      .features-section {
+        margin: 35px 0;
+      }
+
+      .features-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 24px;
+      }
+
+      .feature-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.05) 0%,
+          rgba(255, 255, 255, 0.02) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 24px;
+        margin-bottom: 16px;
+      }
+
+      .feature-card table {
+        width: 100%;
+      }
+
+      .feature-icon-cell {
+        width: 52px;
+        vertical-align: top;
+        padding-right: 18px;
+      }
+
+      .feature-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        text-align: center;
+        line-height: 48px;
+        font-size: 22px;
+      }
+
+      .feature-icon.write {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+      }
+
+      .feature-icon.discover {
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+      }
+
+      .feature-icon.connect {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+      }
+
+      .feature-icon.grow {
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+      }
+
+      .feature-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 6px;
+      }
+
+      .feature-desc {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.5;
+      }
+
+      .cta-section {
+        text-align: center;
+        margin: 40px 0 10px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 16px 48px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .cta-secondary-text {
+        margin-top: 16px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      .interests-section {
+        margin: 35px 0;
+      }
+
+      .interests-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 16px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 8px 18px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 4px 4px;
+        text-decoration: none;
+      }
+
+      .stats-bar {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        margin: 35px 0;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+      }
+
+      .stat-item {
+        flex: 1;
+        text-align: center;
+        padding: 22px 16px;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .stat-item:last-child {
+        border-right: none;
+      }
+
+      .stat-number {
+        font-size: 24px;
+        font-weight: 800;
+        color: #ffffff;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .stat-label {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .tips-section {
+        margin: 35px 0;
+      }
+
+      .tip-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+        border-left: 3px solid;
+      }
+
+      .tip-item:nth-child(2) {
+        border-color: #667eea;
+      }
+
+      .tip-item:nth-child(3) {
+        border-color: #f093fb;
+      }
+
+      .tip-item:nth-child(4) {
+        border-color: #43e97b;
+      }
+
+      .tip-number {
+        font-size: 14px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.3);
+        margin-right: 14px;
+        min-width: 24px;
+      }
+
+      .tip-text {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.5;
+      }
+
+      .tip-text strong {
+        color: #ffffff;
+      }
+
+      .email-footer {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 35px 40px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .footer-links {
+        margin-bottom: 20px;
+      }
+
+      .footer-link {
+        display: inline-block;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 13px;
+        margin: 0 12px;
+      }
+
+      .footer-separator {
+        color: rgba(255, 255, 255, 0.15);
+      }
+
+      .social-links {
+        margin: 20px 0;
+      }
+
+      .social-icon {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+        line-height: 38px;
+        text-align: center;
+        margin: 0 5px;
+        font-size: 16px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-copyright {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 16px;
+        line-height: 1.6;
+      }
+
+      .unsubscribe-link {
+        color: rgba(255, 255, 255, 0.3);
+        text-decoration: underline;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .email-wrapper {
+          padding: 16px 12px;
+        }
+
+        .email-header {
+          padding: 35px 24px 30px;
+        }
+
+        .email-body {
+          padding: 30px 24px;
+        }
+
+        .email-footer {
+          padding: 28px 24px;
+        }
+
+        .welcome-title {
+          font-size: 26px;
+        }
+
+        .feature-card {
+          padding: 18px;
+        }
+
+        .cta-button {
+          padding: 14px 36px;
+          font-size: 15px;
+        }
+
+        .stat-number {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-wrapper">
+      <div class="email-container">
+        <div class="email-header">
+          <div class="logo-container">
+            <span class="logo-text">Writeflow</span>
+            <span class="logo-tagline">Where ideas flow</span>
+          </div>
+
+          <div style="margin-top: 30px">
+            <div class="divider" style="margin-bottom: 28px"></div>
+            <h1 class="welcome-title">Welcome aboard! 🎉</h1>
+            <p class="welcome-subtitle">
+              You've just joined a community of passionate writers,<br />thinkers,
+              and storytellers.
+            </p>
+          </div>
+        </div>
+
+        <div class="email-body">
+          <p class="greeting-text">
+            Hey <span class="username">{{username}}</span>,<br /><br />
+            We're thrilled to have you on
+            <span class="highlight-text">WriteFlow</span>! Whether you're here
+            to share your stories, discover fresh perspectives, or connect with
+            like-minded creators — you're in the right place.
+          </p>
+
+          <div class="features-section">
+            <h2 class="features-title">Here's what you can do ✨</h2>
+
+            <div class="feature-card">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="feature-icon-cell">
+                    <div class="feature-icon write">📝</div>
+                  </td>
+                  <td>
+                    <div class="feature-title">Write & Publish</div>
+                    <div class="feature-desc">
+                      Share your ideas with a beautiful, distraction-free
+                      editor. Your words, your way.
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="feature-card">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="feature-icon-cell">
+                    <div class="feature-icon discover">🔍</div>
+                  </td>
+                  <td>
+                    <div class="feature-title">Discover Stories</div>
+                    <div class="feature-desc">
+                      Explore content from diverse interests — Programming,
+                      Travel, Tech, Film Making, and more.
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="feature-card">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="feature-icon-cell">
+                    <div class="feature-icon grow">📈</div>
+                  </td>
+                  <td>
+                    <div class="feature-title">Grow Your Audience</div>
+                    <div class="feature-desc">
+                      Get discovered through trending sections, tags, and
+                      personalized recommendations.
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="tips-section">
+            <h3
+              style="
+                font-size: 18px;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 18px;
+              "
+            >
+              🚀 Quick start guide
+            </h3>
+
+            <div class="tip-item" style="border-left-color: #667eea">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 38px; vertical-align: top">
+                    <span
+                      style="
+                        font-size: 14px;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.3);
+                      "
+                      >01</span
+                    >
+                  </td>
+                  <td>
+                    <span
+                      style="
+                        font-size: 14px;
+                        color: rgba(255, 255, 255, 0.6);
+                        line-height: 1.5;
+                      "
+                    >
+                      <strong style="color: #ffffff"
+                        >Complete your profile</strong
+                      >
+                      — Add a photo and bio to let others know who you are
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="tip-item" style="border-left-color: #f093fb">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 38px; vertical-align: top">
+                    <span
+                      style="
+                        font-size: 14px;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.3);
+                      "
+                      >02</span
+                    >
+                  </td>
+                  <td>
+                    <span
+                      style="
+                        font-size: 14px;
+                        color: rgba(255, 255, 255, 0.6);
+                        line-height: 1.5;
+                      "
+                    >
+                      <strong style="color: #ffffff"
+                        >Write your first story</strong
+                      >
+                      — Don't overthink it, just let your ideas flow
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="tip-item" style="border-left-color: #43e97b">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="width: 38px; vertical-align: top">
+                    <span
+                      style="
+                        font-size: 14px;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.3);
+                      "
+                      >03</span
+                    >
+                  </td>
+                  <td>
+                    <span
+                      style="
+                        font-size: 14px;
+                        color: rgba(255, 255, 255, 0.6);
+                        line-height: 1.5;
+                      "
+                    >
+                      <strong style="color: #ffffff"
+                        >Follow topics & writers</strong
+                      >
+                      — Curate your feed with content you love
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="cta-section">
+            <a href="https://writeflow-blogs.vercel.app" class="cta-button"
+              >Start Writing →</a
+            >
+            <p class="cta-secondary-text">
+              Your first story is just a click away
+            </p>
+          </div>
+        </div>
+
+        <div class="email-footer">
+          <div class="footer-links">
+            <a href="https://writeflow-blogs.vercel.app" class="footer-link"
+              >Home</a
+            >
+            <span class="footer-separator">·</span>
+            <a href="#" class="footer-link">Write</a>
+            <span class="footer-separator">·</span>
+            <a href="#" class="footer-link">Explore</a>
+            <span class="footer-separator">·</span>
+            <a href="#" class="footer-link">Help</a>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="social-icon">𝕏</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">📷</a>
+          </div>
+
+          <p class="footer-copyright">
+            © 2024 WriteFlow — Where ideas flow<br />
+            <span style="font-size: 11px"
+              >You're receiving this because you signed up at
+              writeflow-blogs.vercel.app</span
+            ><br />
+            <a href="#" class="unsubscribe-link" style="font-size: 11px"
+              >Unsubscribe</a
+            >
+            ·
+            <a href="#" class="unsubscribe-link" style="font-size: 11px"
+              >Email Preferences</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <p
+        style="
+          text-align: center;
+          margin-top: 24px;
+          font-size: 11px;
+          color: rgba(255, 255, 255, 0.15);
+        "
+      >
+        Sent with ❤️ from WriteFlow
+      </p>
+    </div>
+  </body>
+</html>
