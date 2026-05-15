@@ -8,6 +8,7 @@ import blogRoutes from "./routes/blogRoutes";
 import uploadRoutes from "./routes/uploadRoutes";
 import userRoutes from "./routes/userRoutes";
 import notificationRoutes from "./routes/notificationRoutes";
+import agentRoutes from "./routes/agentRoutes";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/api/blog", blogRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/notification", notificationRoutes);
+app.use("/api/agent", agentRoutes);
 
 app.get("/", (req, res) => {
   res.send("The server is running");

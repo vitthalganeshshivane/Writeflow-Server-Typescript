@@ -343,8 +343,6 @@ export const isLikedByUser = async (req: AuthRequest, res: Response) => {
 
 export const addComment = async (req: AuthRequest, res: Response) => {
   try {
-    console.log("BODY:", req.body);
-    console.log("USER:", req.user);
     const user_id = req.user;
     const { _id, comment, replying_to, blog_author, notification_id } =
       req.body;
