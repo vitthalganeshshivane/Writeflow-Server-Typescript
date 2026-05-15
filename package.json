@@ -7,7 +7,7 @@
     "dev": "nodemon --watch server.ts --exec ts-node server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "email:worker": "ts-node scripts/runEmailWorker.ts"
+    "email:worker": "node dist/scripts/runEmailWorker.js"
   },
   "keywords": [],
   "author": "",
