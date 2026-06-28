@@ -1,0 +1,25 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const blogController_1 = require("../controllers/blogController");
+const verifyJWT_1 = __importDefault(require("../middlewares/verifyJWT"));
+const router = express_1.default.Router();
+router.post("/create-blog", verifyJWT_1.default, blogController_1.createBlog);
+router.post("/get-blog", blogController_1.getBlog);
+router.post("/latest-blogs", blogController_1.latestBlogs);
+router.get("/trending-blogs", blogController_1.trendingBlogs);
+router.post("/search-blogs", blogController_1.searchBlogs);
+router.post("/all-latest-blogs-count", blogController_1.allLatestBlogsCount);
+router.post("/search-blogs-count", blogController_1.searchBlogsCount);
+router.post("/like-blog", verifyJWT_1.default, blogController_1.likeBlog);
+router.post("/isLiked-by-user", verifyJWT_1.default, blogController_1.isLikedByUser);
+router.post("/add-comment", verifyJWT_1.default, blogController_1.addComment);
+router.post("/get-blog-comments", blogController_1.getBlogComments);
+router.post("/get-replies", blogController_1.getReplies);
+router.post("/delete-comment", verifyJWT_1.default, blogController_1.deleteComment);
+router.post("/user-written-blogs", verifyJWT_1.default, blogController_1.userWrittenBlogs);
+router.post("/user-written-blogs-count", verifyJWT_1.default, blogController_1.userWrittenBlogsCount);
+exports.default = router;
