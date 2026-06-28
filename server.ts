@@ -2,7 +2,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import connectDB from "./config/db";
-import { registerWeeklyDigestScheduler } from "./jobs/registerWeeklyDigestScheduler";
 
 import authRoutes from "./routes/authRoutes";
 import blogRoutes from "./routes/blogRoutes";
@@ -25,20 +24,8 @@ const PORT = process.env.PORT || 8000;
 
 const startServer = async () => {
   try {
-    // Connect to MongoDB first
     await connectDB();
 
-    // Initialize BullMQ worker and scheduler AFTER DB is connected
-    // This runs both worker and scheduler in the same process
-    await registerWeeklyDigestScheduler();
-
-    // Import and start worker (side-effect initialization)
-    // Worker starts listening automatically when imported
-    await import("./workers/email.worker");
-
-    console.log("✓ BullMQ worker and scheduler initialized");
-
-    // Mount API routes
     app.use("/api/auth", authRoutes);
     app.use("/api/blog", blogRoutes);
     app.use("/api/upload", uploadRoutes);
@@ -50,10 +37,8 @@ const startServer = async () => {
       res.send("The server is running");
     });
 
-    // Start Express server
     app.listen(PORT, () => {
-      console.log(`✓ Server running on port ${PORT}`);
-      console.log(`✓ Email worker running in same process`);
+      console.log(`✓ API server running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);

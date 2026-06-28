@@ -5,9 +5,15 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --watch server.ts --exec ts-node server.ts",
+    "dev:worker": "nodemon --watch worker.ts --exec ts-node worker.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "email:worker": "node dist/scripts/runEmailWorker.js"
+    "start:worker": "node dist/worker.js",
+    "pm2:api": "pm2 start ecosystem.config.js --only api-server",
+    "pm2:worker": "pm2 start ecosystem.config.js --only email-worker",
+    "pm2:all": "pm2 start ecosystem.config.js",
+    "pm2:logs": "pm2 logs",
+    "pm2:status": "pm2 status"
   },
   "keywords": [],
   "author": "",
