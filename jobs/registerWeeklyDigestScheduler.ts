@@ -1,7 +1,7 @@
-import { emailQueue } from "../queues/email.queue";
+import type { Queue } from "bullmq";
 
-export const registerWeeklyDigestScheduler = async () => {
-  await emailQueue.upsertJobScheduler(
+export const registerWeeklyDigestScheduler = async (queue: Queue) => {
+  await queue.upsertJobScheduler(
     "weekly-digest-scheduler",
     {
       every: 7 * 24 * 60 * 60 * 1000,

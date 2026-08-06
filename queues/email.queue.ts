@@ -1,12 +1,14 @@
 import { Queue } from "bullmq";
-import redisConnection from "../config/redis";
+import type IORedis from "ioredis";
 
-export const emailQueue = new Queue("email-queue", {
-  connection: redisConnection,
-  defaultJobOptions: {
-    attempts: 3,
-    backoff: { type: "exponential", delay: 3000 },
-    removeOnComplete: true,
-    removeOnFail: true,
-  },
-});
+export function createEmailQueue(connection: IORedis) {
+  return new Queue("email-queue", {
+    connection,
+    defaultJobOptions: {
+      attempts: 3,
+      backoff: { type: "exponential", delay: 3000 },
+      removeOnComplete: true,
+      removeOnFail: true,
+    },
+  });
+}
