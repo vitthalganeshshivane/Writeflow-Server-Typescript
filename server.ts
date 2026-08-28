@@ -74,6 +74,16 @@ console.log("[BOOT-3] Express and CORS loaded");
     );
     console.log("[BOOT-22] Express middleware configured");
 
+    // Lightweight health check - no DB/Redis, used for Render keep-alive and monitoring
+    app.get("/health", (_req: any, res: any) => {
+      res.set("Cache-Control", "no-store");
+      res.status(200).json({ status: "ok", timestamp: new Date().toISOString(), uptime: process.uptime() });
+    });
+    app.head("/health", (_req: any, res: any) => {
+      res.set("Cache-Control", "no-store");
+      res.status(200).end();
+    });
+
     console.log("[BOOT-23] Mounting routes...");
     app.use("/api/auth", authRoutes);
     app.use("/api/blog", blogRoutes);
@@ -91,6 +101,14 @@ console.log("[BOOT-3] Express and CORS loaded");
     console.log("[BOOT-25] Starting Express on port", PORT);
     app.listen(PORT, () => {
       console.log("[BOOT-26] Server listening on port", PORT);
+      // Start self-ping to prevent Render free tier sleep (14m interval)
+      // Requires RENDER_EXTERNAL_URL (auto-injected by Render) or KEEP_ALIVE_URL
+      try {
+        const { startSelfPing } = require("./utils/keepAlive");
+        startSelfPing();
+      } catch (e: any) {
+        console.error("[keep-alive] failed to start", e.message);
+      }
     });
   } catch (error: any) {
     console.error("[BOOT-ERROR] Server startup failed");
