@@ -24,7 +24,9 @@ console.log("[BOOT-3] Express and CORS loaded");
     console.log("[BOOT-17] notificationRoutes imported");
     const agentRoutes = require("./routes/agentRoutes").default;
     console.log("[BOOT-18] agentRoutes imported");
-    console.log("[BOOT-19] All routes imported");
+    const threadRoutes = require("./routes/threadRoutes").default;
+    console.log("[BOOT-19] threadRoutes imported");
+    console.log("[BOOT-20] All routes imported");
 
     console.log("[BOOT-20] Connecting to MongoDB...");
     const connectDB = require("./config/db").default;
@@ -58,6 +60,7 @@ console.log("[BOOT-3] Express and CORS loaded");
     app.use("/api/user", userRoutes);
     app.use("/api/notification", notificationRoutes);
     app.use("/api/agent", agentRoutes);
+    app.use("/api/thread", threadRoutes);
 
     app.get("/", (_req: any, res: any) => {
       res.send("The server is running");

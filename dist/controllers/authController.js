@@ -13,7 +13,7 @@ const emailService_1 = require("../services/email/emailService");
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 const formatDataToSend = (user) => {
-    const access_token = jsonwebtoken_1.default.sign({ id: user._id, admin: user.admin }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    const access_token = jsonwebtoken_1.default.sign({ id: user._id, admin: user.admin }, process.env.JWT_SECRET, { expiresIn: "14d" });
     return {
         access_token,
         profile_img: user.personal_info.profile_img,
