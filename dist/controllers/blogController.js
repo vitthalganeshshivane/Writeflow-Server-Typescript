@@ -19,10 +19,16 @@ const createBlog = async (req, res) => {
                 .json({ error: "You don't have permission to create a blog" });
         }
         const { title, des, banner, tags, content, draft, id } = req.body;
-        if (!title || !title.length) {
+        const isDraft = Boolean(draft);
+        const blogTitle = typeof title === "string" && title.trim().length
+            ? title.trim()
+            : isDraft
+                ? "Untitled Draft"
+                : "";
+        if (!blogTitle.length) {
             return res.status(403).json({ error: "Title is required" });
         }
-        if (!draft) {
+        if (!isDraft) {
             if (!des || des.length > 200) {
                 return res.status(403).json({
                     error: "Description must be under 200 characters",
@@ -42,35 +48,57 @@ const createBlog = async (req, res) => {
                 });
             }
         }
-        const normalizedTags = tags.map((tag) => tag.toLowerCase());
-        const blog_id = id ||
-            title
-                .replace(/[^a-zA-Z0-9]/g, " ")
-                .replace(/\s+/g, "-")
-                .trim() + (0, nanoid_1.nanoid)();
+        const normalizedTags = Array.isArray(tags)
+            ? tags.map((tag) => String(tag).toLowerCase())
+            : [];
+        let cleanSlug = blogTitle
+            .replace(/[^a-zA-Z0-9]/g, " ")
+            .replace(/\s+/g, "-")
+            .trim();
+        if (!cleanSlug.length)
+            cleanSlug = "blog";
+        const blog_id = id || `${cleanSlug}-${(0, nanoid_1.nanoid)(8)}`;
         if (id) {
+            const existingBlog = await Blog_1.default.findOne({ blog_id });
+            if (!existingBlog) {
+                return res.status(404).json({ error: "Blog not found" });
+            }
+            if (authorId &&
+                existingBlog.author.toString() !== authorId.toString() &&
+                !admin) {
+                return res
+                    .status(403)
+                    .json({ error: "You don't have permission to edit this blog" });
+            }
             await Blog_1.default.findOneAndUpdate({ blog_id }, {
-                title,
+                title: blogTitle,
                 des,
                 banner,
                 content,
                 tags: normalizedTags,
-                draft: Boolean(draft),
+                draft: isDraft,
             });
+            // If existing blog was draft and now published, increment total_posts
+            if (existingBlog.draft && !isDraft) {
+                await User_1.default.findOneAndUpdate({ _id: authorId }, { $inc: { "account_info.total_posts": 1 } });
+            }
+            else if (!existingBlog.draft && isDraft) {
+                await User_1.default.findOneAndUpdate({ _id: authorId }, { $inc: { "account_info.total_posts": -1 } });
+            }
             return res.status(200).json({ id: blog_id });
         }
         const blog = new Blog_1.default({
-            title,
+            title: blogTitle,
             des,
             banner,
             content,
             tags: normalizedTags,
             author: authorId,
             blog_id,
-            draft: Boolean(draft),
+            draft: isDraft,
         });
         const savedBlog = await blog.save();
-        const incrementVal = draft ? 0 : 1;
+        const incrementVal = isDraft ? 0 : 1;
         await User_1.default.findOneAndUpdate({ _id: authorId }, {
             $inc: { "account_info.total_posts": incrementVal },
             $push: { blogs: savedBlog._id },

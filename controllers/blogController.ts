@@ -24,12 +24,20 @@ export const createBlog = async (req: AuthRequest, res: Response) => {
     }
 
     const { title, des, banner, tags, content, draft, id } = req.body;
+    const isDraft = Boolean(draft);
 
-    if (!title || !title.length) {
+    const blogTitle =
+      typeof title === "string" && title.trim().length
+        ? title.trim()
+        : isDraft
+          ? "Untitled Draft"
+          : "";
+
+    if (!blogTitle.length) {
       return res.status(403).json({ error: "Title is required" });
     }
 
-    if (!draft) {
+    if (!isDraft) {
       if (!des || des.length > 200) {
         return res.status(403).json({
           error: "Description must be under 200 characters",
@@ -53,45 +61,76 @@ export const createBlog = async (req: AuthRequest, res: Response) => {
       }
     }
 
-    const normalizedTags = tags.map((tag: string) => tag.toLowerCase());
+    const normalizedTags = Array.isArray(tags)
+      ? tags.map((tag: string) => String(tag).toLowerCase())
+      : [];
 
-    const blog_id =
-      id ||
-      title
-        .replace(/[^a-zA-Z0-9]/g, " ")
-        .replace(/\s+/g, "-")
-        .trim() + nanoid();
+    let cleanSlug = blogTitle
+      .replace(/[^a-zA-Z0-9]/g, " ")
+      .replace(/\s+/g, "-")
+      .trim();
+    if (!cleanSlug.length) cleanSlug = "blog";
+
+    const blog_id = id || `${cleanSlug}-${nanoid(8)}`;
 
     if (id) {
+      const existingBlog = await Blog.findOne({ blog_id });
+      if (!existingBlog) {
+        return res.status(404).json({ error: "Blog not found" });
+      }
+
+      if (
+        authorId &&
+        existingBlog.author.toString() !== authorId.toString() &&
+        !admin
+      ) {
+        return res
+          .status(403)
+          .json({ error: "You don't have permission to edit this blog" });
+      }
+
       await Blog.findOneAndUpdate(
         { blog_id },
         {
-          title,
+          title: blogTitle,
           des,
           banner,
           content,
           tags: normalizedTags,
-          draft: Boolean(draft),
+          draft: isDraft,
         },
       );
+
+      // If existing blog was draft and now published, increment total_posts
+      if (existingBlog.draft && !isDraft) {
+        await User.findOneAndUpdate(
+          { _id: authorId },
+          { $inc: { "account_info.total_posts": 1 } },
+        );
+      } else if (!existingBlog.draft && isDraft) {
+        await User.findOneAndUpdate(
+          { _id: authorId },
+          { $inc: { "account_info.total_posts": -1 } },
+        );
+      }
 
       return res.status(200).json({ id: blog_id });
     }
 
     const blog = new Blog({
-      title,
+      title: blogTitle,
       des,
       banner,
       content,
       tags: normalizedTags,
       author: authorId,
       blog_id,
-      draft: Boolean(draft),
+      draft: isDraft,
     });
 
     const savedBlog = await blog.save();
 
-    const incrementVal = draft ? 0 : 1;
+    const incrementVal = isDraft ? 0 : 1;
 
     await User.findOneAndUpdate(
       { _id: authorId },
