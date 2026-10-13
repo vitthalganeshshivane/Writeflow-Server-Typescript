@@ -39,24 +39,31 @@ async function isConnectionUsable(conn) {
     }
 }
 async function resolveConnection() {
+    if (!urls.length) {
+        console.log("[REDIS] No Redis URLs configured. Redis is disabled/detached.");
+        return null;
+    }
     for (let i = 0; i < urls.length; i++) {
         const url = urls[i];
         const label = `REDIS_URL${i === 0 ? "" : `_FALLBACK_${i}`}`;
         console.log(`[REDIS] Trying ${label}...`);
-        const conn = createConnection(url);
-        const usable = await isConnectionUsable(conn);
-        if (usable) {
-            console.log(`[REDIS] ${label} OK`);
-            return conn;
-        }
-        console.error(`[REDIS] ${label} failed, trying next...`);
         try {
-            conn.disconnect();
+            const conn = createConnection(url);
+            const usable = await isConnectionUsable(conn);
+            if (usable) {
+                console.log(`[REDIS] ${label} OK`);
+                return conn;
+            }
+            try {
+                conn.disconnect();
+            }
+            catch { }
         }
         catch { }
+        console.log(`[REDIS] ${label} failed, trying next...`);
     }
-    console.error("[REDIS] All Redis connections failed");
-    throw new Error("No Redis connection available");
+    console.log("[REDIS] All Redis connections failed. Running in detached mode.");
+    return null;
 }
 const connectionPromise = resolveConnection();
 exports.default = connectionPromise;

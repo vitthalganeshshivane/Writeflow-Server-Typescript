@@ -11,6 +11,10 @@ const registerWeeklyDigestScheduler_1 = require("../jobs/registerWeeklyDigestSch
 const email_worker_1 = require("../workers/email.worker");
 const start = async () => {
     const redisConnection = await redis_1.default;
+    if (!redisConnection) {
+        console.log("Redis is not available. Email worker cannot start.");
+        return;
+    }
     const emailQueue = (0, email_queue_1.createEmailQueue)(redisConnection);
     (0, email_worker_1.createEmailWorker)(redisConnection);
     await (0, db_1.default)();

@@ -9,40 +9,7 @@ console.log("[BOOT-3] Express and CORS loaded");
 
 (async () => {
   try {
-    console.log("[BOOT-4] Resolving Redis connection...");
-    const connectionPromise = require("./config/redis").default;
-    const redisConnection = await connectionPromise;
-    console.log("[BOOT-5] Redis connection ready");
-
-    let emailQueue: any = null;
-    try {
-      console.log("[BOOT-6] Creating BullMQ queue...");
-      const { createEmailQueue } = require("./queues/email.queue");
-      emailQueue = createEmailQueue(redisConnection);
-      console.log("[BOOT-7] Queue created");
-
-      console.log("[BOOT-8] Registering weekly digest scheduler...");
-      const { registerWeeklyDigestScheduler } = require("./jobs/registerWeeklyDigestScheduler");
-      await registerWeeklyDigestScheduler(emailQueue);
-      console.log("[BOOT-9] Scheduler registered");
-    } catch (schedulerErr: any) {
-      console.error("[BOOT-6-WARN] BullMQ scheduler failed (non-fatal):");
-      console.error("error.name:", schedulerErr.name);
-      console.error("error.message:", schedulerErr.message);
-      console.error("Server will continue without email scheduler.");
-    }
-
-    try {
-      console.log("[BOOT-10] Creating email worker...");
-      const { createEmailWorker } = require("./workers/email.worker");
-      createEmailWorker(redisConnection);
-      console.log("[BOOT-11] Worker created");
-    } catch (workerErr: any) {
-      console.error("[BOOT-10-WARN] BullMQ worker failed (non-fatal):");
-      console.error("error.name:", workerErr.name);
-      console.error("error.message:", workerErr.message);
-      console.error("Server will continue without email worker.");
-    }
+    console.log("[BOOT-4] Redis detached (running server without Redis/BullMQ)");
 
     console.log("[BOOT-12] Importing routes...");
     const authRoutes = require("./routes/authRoutes").default;

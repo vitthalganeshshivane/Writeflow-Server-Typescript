@@ -7,6 +7,10 @@ import { createEmailWorker } from "../workers/email.worker";
 
 const start = async () => {
   const redisConnection = await redisConnectionPromise;
+  if (!redisConnection) {
+    console.log("Redis is not available. Email worker cannot start.");
+    return;
+  }
   const emailQueue = createEmailQueue(redisConnection);
   createEmailWorker(redisConnection);
 
