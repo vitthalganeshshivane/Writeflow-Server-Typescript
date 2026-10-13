@@ -15,7 +15,7 @@ const formatDataToSend = (user: any) => {
   const access_token = jwt.sign(
     { id: user._id, admin: user.admin },
     process.env.JWT_SECRET as string,
-    { expiresIn: "7d" },
+    { expiresIn: "14d" },
   );
 
   return {
